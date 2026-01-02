@@ -38,7 +38,7 @@ jobs:
         echo "Build number: ${{inputs.build-number}}"
         echo "Message: ${{inputs.message}}"
     - name: run tests if selected
-      if: ${{inputs.run-tests == 'true'}}
+      if: ${{inputs.run-tests == true}}
       run: |
         echo "I am running tests: ${{inputs.test-type}}"
     - name: Deploy to chosen environment ${{inputs.environment}}
