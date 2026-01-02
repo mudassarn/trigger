@@ -37,3 +37,9 @@ jobs:
         echo "Environment: ${{inputs.environment}}"
         echo "Build number: ${{inputs.build-number}}"
         echo "Message: ${{inputs.message}}"
+    - name: run tests if selected
+      if: ${{inputs.run-tests == 'true'}}
+      run: |
+        echo "I am running tests: ${{inputs.test-type}}"
+    - name: Deploy to chosen environment ${{inputs.environment}}
+      run: echo "Deploy to ${{inputs.environment}}"
