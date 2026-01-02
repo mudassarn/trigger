@@ -9,6 +9,7 @@ on:
       test-type:
         description: "type of tests to run"
         type: choice
+        options:
         - unit
         - integration
         - all
