@@ -1,0 +1,38 @@
+name: Trigger workflow with different inputs
+on:
+  workflow_dispatch:
+    inputs:
+      run-tests:
+        description: "Run tests?"
+        type: boolean
+        required: true
+      test-type:
+        description: "type of tests to run"
+        type: choice
+        - unit
+        - integration
+        - all
+      environment:
+        description: Choose an environment to run against
+        type: environment
+        required: true
+      build-number:
+        description: build build-number
+        type: integer
+        required: false
+      message:
+        description: message
+        type: string
+        required: false
+
+jobs:
+  process-inputs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Process process
+      run: |
+        echo "Run tests: ${{inputs.run-tests}}"
+        echo "Test type: ${{inputs.test-type}}"
+        echo "Environment: ${{inputs.environment}}"
+        echo "Build number: ${{inputs.build-number}}"
+        echo "Message: ${{inputs.message}}"
